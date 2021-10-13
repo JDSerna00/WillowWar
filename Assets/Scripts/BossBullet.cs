@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class BossBullet : MonoBehaviour
 {
-    public float speed = 20f;
+    public float speed = 50f;
     public int damage = 1;
     public Rigidbody2D rb;
     // Start is called before the first frame update
@@ -21,20 +21,14 @@ public class Bullet : MonoBehaviour
         }
     }    
 
-    void OnTriggerEnter2D (Collider2D hitInfo)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        Enemy enemy = hitInfo.GetComponent<Enemy>();
-        if (enemy != null)
-        {
-            enemy.TakeDamage(damage);
-        }
+        Player player = other.gameObject.GetComponent<Player>();
 
-        Boss boss = hitInfo.GetComponent<Boss>();
-        if (boss != null)
+        if (player != null)
         {
-            boss.TakeDamage(damage);
+            player.ChangeHealth(-1);
         }
         Destroy(gameObject);
     }
-
 }

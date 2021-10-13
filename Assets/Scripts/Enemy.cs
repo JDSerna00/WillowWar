@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rigidbody2D;
     float timer;
     int direction = 1;
+    public int health = 2;
     
     // Start is called before the first frame update
     void Start()
@@ -53,5 +54,20 @@ public class Enemy : MonoBehaviour
         {
             player.ChangeHealth(-1);
         }
+    }
+
+    public void TakeDamage (int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die ()
+    {
+        Destroy(gameObject);
     }
 }

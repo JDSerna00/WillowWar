@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     Rigidbody2D rigidbody2d;
     public GameObject proyectilPrefab;
+    private int extraJumps;
     public float speed = 3.0f;
     public float jumpForce = 1.0f;
     public int lives = 3;
@@ -13,26 +14,35 @@ public class Player : MonoBehaviour
     public int maxHealth = 3;
     public int health { get { return currentHealth; }}
     public int currentHealth;
+    public int extraJumpsValue;
     public float timeInvincible = 2.0f;
+    public float checkRadius;
+    public Transform groundCheck;
     public bool isInvincible;
+    public LayerMask whatIsGround;
     float invincibleTimer;
     int shoots;
+    bool isDead = false;
+    
     bool isGrounded;
     bool m_FacingRight = true;
     Animator animator;
 
     void Start()
     {
+        extraJumps = extraJumpsValue;
         animator = GetComponent<Animator>();
         rigidbody2d = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         totalLives = lives;
         shoots = 10;
     }
-    void Update()
+    void FixedUpdate()
     {
-        float horizontal = Input.GetAxis("Horizontal");
 
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+
+        float horizontal = Input.GetAxis("Horizontal");
         rigidbody2d.velocity = new Vector2(horizontal * speed, rigidbody2d.velocity.y);
 
         if (horizontal > 0 && !m_FacingRight)
@@ -46,37 +56,39 @@ public class Player : MonoBehaviour
 				// ... flip the player.
 				Flip();
 			}
-        
-        if(Input.GetKey(KeyCode.Space) && isGrounded)
-            Jump();
+    }
+    void Update()
+    {
+        float horizontal = Input.GetAxis("Horizontal");
 
-        animator.SetBool("run", horizontal != 0);    
+        if (isGrounded == true)
+        {
+            extraJumps = extraJumpsValue;  
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && extraJumps > 0)
+        {
+            Jump();  
+            extraJumps--;
+        }            
+            else if(Input.GetKeyDown(KeyCode.Space) && extraJumps == 0 && isGrounded == true)
+            {
+                Jump();
+            }
+
+         animator.SetBool("run", horizontal != 0);    
 
          if (isInvincible)
         {
             invincibleTimer -= Time.deltaTime;
             if (invincibleTimer < 0)
                 isInvincible = false;
-        }
-        if (Input.GetKey(KeyCode.C))
-        {
-            if (shoots > 0)
-            {
-            
-            }
-        }
+        }                
     }
-
+        
     void Jump()
     {
             rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpForce);
-            isGrounded = false;
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "Ground")
-        isGrounded = true;
     }
 
     void Flip()
@@ -91,6 +103,10 @@ public class Player : MonoBehaviour
         speed = speed*1.2f;
     }
 
+    public void doubleJump()
+    {
+        extraJumpsValue = extraJumpsValue + 1;
+    }
     public void MaxHealth()
     {
         maxHealth = maxHealth + 1;
@@ -107,6 +123,17 @@ public class Player : MonoBehaviour
         }
         currentHealth = Mathf.Clamp(currentHealth + amount , 0, maxHealth);
         Debug.Log(currentHealth + "/" + maxHealth);
-    }
 
-}
+        if (health <= 0)
+        {
+            FindObjectOfType<manager>().Restart();
+        }
+    }
+    public void Die()
+    {
+        isDead = true;
+    }
+    
+ }
+
+
