@@ -18,7 +18,7 @@ public class Boss : MonoBehaviour
 
         if (player != null)
         {
-            player.ChangeHealth(-1);
+            player.ChangeHealth(1);
         }
     }
     public void TakeDamage (int damage)

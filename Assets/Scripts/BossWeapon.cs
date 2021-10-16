@@ -4,19 +4,40 @@ using UnityEngine;
 
 public class BossWeapon : MonoBehaviour
 {
-    public Transform firePos;
-    public GameObject bossBulletPrefab;
+    public Transform shootPos;
+    public GameObject bullet;
+    public Transform player;
+    public float range;
+    public float timeBTWShots;
+    private float distToPlayer;
+    private bool canShoot;
+
+    void Start()
+    {
+        canShoot = true;
+    }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.V))
+
+        distToPlayer = Vector2.Distance(transform.position, player.position);
+
+        if(distToPlayer <= range)
         {
-            Shoot();
+            if(canShoot)
+            {
+            StartCoroutine(Shoot());
+            }
         }
     }
 
-    void Shoot()
+    IEnumerator Shoot()
     {
-        Instantiate(bossBulletPrefab, firePos.position, firePos.rotation);
+        canShoot = false;
+
+        yield return new WaitForSeconds(timeBTWShots);
+        GameObject newBullet = Instantiate(bullet, shootPos.position, Quaternion.identity);
+
+        canShoot = true;
     }
 }

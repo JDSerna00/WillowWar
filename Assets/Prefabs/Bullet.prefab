@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 491a9e792cc8d254a86ce483b26f737d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e44a940b37f7c0499d3dfad0d6cf947, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,9 +119,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.5224204, y: 0.018657923}
+  m_Offset: {x: -0.057249285, y: 0.018657958}
   serializedVersion: 2
-  m_Radius: 0.94965863
+  m_Radius: 0.1302431
 --- !u!114 &4859079228409851427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 420874c839072404d80ca5154b7951f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 35
+  speed: 10
   damage: 1
   rb: {fileID: 2156699198607472388}

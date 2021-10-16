@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     Rigidbody2D rigidbody2d;
-    public GameObject proyectilPrefab;
     private int extraJumps;
     public float speed = 3.0f;
     public float jumpForce = 1.0f;
-    public int lives = 3;
-    public int totalLives;
     public int maxHealth = 3;
-    public int health { get { return currentHealth; }}
+    public int health = 3;
+    [SerializeField] healthSystem hs;
     public int currentHealth;
     public int extraJumpsValue;
     public float timeInvincible = 2.0f;
@@ -21,8 +20,6 @@ public class Player : MonoBehaviour
     public bool isInvincible;
     public LayerMask whatIsGround;
     float invincibleTimer;
-    int shoots;
-    bool isDead = false;
     
     bool isGrounded;
     bool m_FacingRight = true;
@@ -34,8 +31,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         rigidbody2d = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
-        totalLives = lives;
-        shoots = 10;
+        hs.DrawHearts(health, maxHealth);
     }
     void FixedUpdate()
     {
@@ -56,6 +52,8 @@ public class Player : MonoBehaviour
 				// ... flip the player.
 				Flip();
 			}
+
+             animator.SetBool("run", horizontal != 0);  
     }
     void Update()
     {
@@ -74,9 +72,7 @@ public class Player : MonoBehaviour
             else if(Input.GetKeyDown(KeyCode.Space) && extraJumps == 0 && isGrounded == true)
             {
                 Jump();
-            }
-
-         animator.SetBool("run", horizontal != 0);    
+            }  
 
          if (isInvincible)
         {
@@ -110,6 +106,7 @@ public class Player : MonoBehaviour
     public void MaxHealth()
     {
         maxHealth = maxHealth + 1;
+        hs.DrawHearts(health,maxHealth);
     }
     public void ChangeHealth(int amount)
     {
@@ -121,17 +118,24 @@ public class Player : MonoBehaviour
             isInvincible = true;
             invincibleTimer = timeInvincible;
         }
-        currentHealth = Mathf.Clamp(currentHealth + amount , 0, maxHealth);
-        Debug.Log(currentHealth + "/" + maxHealth);
+
+        if (health > 0)
+        health -= amount;
+
+        hs.DrawHearts(health,maxHealth);
 
         if (health <= 0)
         {
-            FindObjectOfType<manager>().Restart();
+            SceneManager.LoadScene("GameOver");
         }
     }
-    public void Die()
+    public void HealPlayer(int dmg)
     {
-        isDead = true;
+        if (health < maxHealth)
+        {
+        health += dmg;
+        hs.DrawHearts(health,maxHealth);
+        }
     }
     
  }

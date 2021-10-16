@@ -12,7 +12,7 @@ public class HealthPickup : MonoBehaviour
         {
             if(controller.currentHealth  < controller.maxHealth)
             {
-                controller.ChangeHealth(1);
+                controller.HealPlayer(1);
                 Destroy(gameObject);
             }
             

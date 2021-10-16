@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Enemies
+  - Teleporter
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Proyectil
   - Enemies
   - Ground
-  - 
-  - 
+  - Confiner
+  - BossProyectil
   - 
   - 
   - 
