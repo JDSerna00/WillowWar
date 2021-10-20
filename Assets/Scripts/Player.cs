@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -17,8 +18,8 @@ public class Player : MonoBehaviour
     public float timeInvincible = 2.0f;
     public float checkRadius;
     public Transform groundCheck;
-    public bool isInvincible;
     public LayerMask whatIsGround;
+    public bool isInvincible;
     float invincibleTimer;
     
     bool isGrounded;
@@ -85,6 +86,7 @@ public class Player : MonoBehaviour
     void Jump()
     {
             rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpForce);
+            FindObjectOfType<AudioManager>().Play("Jump");
     }
 
     void Flip()
@@ -121,12 +123,13 @@ public class Player : MonoBehaviour
 
         if (health > 0)
         health -= amount;
-
+        FindObjectOfType<AudioManager>().Play("TakeDamage");
         hs.DrawHearts(health,maxHealth);
 
         if (health <= 0)
         {
-            SceneManager.LoadScene("GameOver");
+            
+            SceneManager.LoadScene("GameOver");            
         }
     }
     public void HealPlayer(int dmg)

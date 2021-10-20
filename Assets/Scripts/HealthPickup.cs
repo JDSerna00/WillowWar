@@ -13,6 +13,7 @@ public class HealthPickup : MonoBehaviour
             if(controller.currentHealth  < controller.maxHealth)
             {
                 controller.HealPlayer(1);
+                FindObjectOfType<AudioManager>().Play("PickUp");       
                 Destroy(gameObject);
             }
             

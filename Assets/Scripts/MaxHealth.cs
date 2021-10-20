@@ -10,6 +10,7 @@ public class MaxHealth : MonoBehaviour
         if (controller != null)
         { 
             controller.MaxHealth();
+            FindObjectOfType<AudioManager>().Play("PickUp");    
             Destroy(gameObject);
         }
     }

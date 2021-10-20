@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BossBullet : MonoBehaviour
 {
-    public float speed = 50f;
+    public float speed = 30f;
     public int damage = 1;
     public Rigidbody2D rb;
-    // Start is called before the first frame update
+    
     void Start()
     {
         rb.velocity = transform.right * speed;

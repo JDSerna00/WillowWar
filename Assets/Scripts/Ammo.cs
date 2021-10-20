@@ -10,6 +10,7 @@ public class Ammo : MonoBehaviour
         if (controller != null)
         { 
             controller.Shooting();
+            FindObjectOfType<AudioManager>().Play("PickUp");    
             Destroy(gameObject);
         }
     }
