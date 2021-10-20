@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -223,6 +223,85 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &863148840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 863148842}
+  - component: {fileID: 863148841}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &863148841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863148840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d706cea528373442886811c0c4f6faa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Lose
+    clip: {fileID: 8300000, guid: f2749e8d3b5b3014ab8a09878bdbaad9, type: 3}
+    volume: 0.695
+    pitch: 2.55
+    source: {fileID: 0}
+  - name: Jump
+    clip: {fileID: 8300000, guid: da959e703f5db78449277456a04e4364, type: 3}
+    volume: 0.593
+    pitch: 2.55
+    source: {fileID: 0}
+  - name: Shoot
+    clip: {fileID: 8300000, guid: 7b7172ff4c3bc9747b571820dae3bc39, type: 3}
+    volume: 0.436
+    pitch: 2.55
+    source: {fileID: 0}
+  - name: PickUp
+    clip: {fileID: 8300000, guid: 55bff4c99a769a949a74ee164c6cf069, type: 3}
+    volume: 0.696
+    pitch: 2.55
+    source: {fileID: 0}
+  - name: TakeDamage
+    clip: {fileID: 8300000, guid: 96c2f62fbc3df264a92d2afd5af8a1bc, type: 3}
+    volume: 0.576
+    pitch: 2.55
+    source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: 927a005d23b205149b90f31edd4b0f39, type: 3}
+    volume: 0.576
+    pitch: 2.55
+    source: {fileID: 0}
+  - name: Button
+    clip: {fileID: 8300000, guid: d66b4d46acb0c4d41b7eb45df149dcb7, type: 3}
+    volume: 0.576
+    pitch: 2.55
+    source: {fileID: 0}
+--- !u!4 &863148842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863148840}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1308028281
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,7 +691,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 918f03783e3895d49aeaa06ce878ee66, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.16
+  m_Volume: 0.271
   m_Pitch: 1
   Loop: 0
   Mute: 0

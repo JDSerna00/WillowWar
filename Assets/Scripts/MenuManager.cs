@@ -7,6 +7,13 @@ public class MenuManager : MonoBehaviour
 {
     public void EscenaJuego()
     {
-        SceneManager.LoadScene("Firstlevel");
+        SceneManager.LoadScene("FirstLevel");
+        FindObjectOfType<AudioManager>().Play("Start");
+        
+    }
+    public void Creditos()
+    {
+        SceneManager.LoadScene("Credits");
+        FindObjectOfType<AudioManager>().Play("Button");
     }
 }

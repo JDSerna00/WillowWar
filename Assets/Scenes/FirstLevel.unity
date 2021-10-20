@@ -979,6 +979,11 @@ MonoBehaviour:
     volume: 0.576
     pitch: 2.55
     source: {fileID: 0}
+  - name: Button
+    clip: {fileID: 8300000, guid: d66b4d46acb0c4d41b7eb45df149dcb7, type: 3}
+    volume: 0.576
+    pitch: 2.55
+    source: {fileID: 0}
 --- !u!4 &197430608
 Transform:
   m_ObjectHideFlags: 0
