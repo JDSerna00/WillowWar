@@ -16,4 +16,9 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("Credits");
         FindObjectOfType<AudioManager>().Play("Button");
     }
+    public void Tuto()
+    {
+        SceneManager.LoadScene("Tuto");
+        FindObjectOfType<AudioManager>().Play("Button");
+    }
 }

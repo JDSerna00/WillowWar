@@ -16,6 +16,7 @@ public class PlayerTeleport : MonoBehaviour
         {
             currentTeleporter = collision.gameObject;
             transform.position = currentTeleporter.GetComponent<Teleporter>().GetDestination().position;
+            Destroy(collision.gameObject);
         }
     }
     

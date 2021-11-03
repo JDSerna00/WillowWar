@@ -7,11 +7,17 @@ public class AIPatrol : MonoBehaviour
     [HideInInspector]
     public bool mustPatrol;
     private bool mustTurn;
+    bool isGrounded;
 
     public Rigidbody2D rb;
     public Transform groundCheckPos;
+    public Transform groundCheck;
     public LayerMask groundLayer;
     public float walkSpeed;
+    public float jumpRate = 0.5f;
+    private float nextJump = 0.0f;
+    public float jumpForce;
+    
     
     void Start()
     {
@@ -20,24 +26,34 @@ public class AIPatrol : MonoBehaviour
 
     
     void Update()
-    {
+    {   
         if (mustPatrol)
         {
-            Patrol();
+            Patrol();           
         }
     }
 
     private void FixedUpdate()
     {
+        
+
+        if (Time.time > nextJump)
+        {
+            mustTurn = false;
+            nextJump = Time.time + jumpRate;
+            Jump();
+            mustTurn = true;
+        }
         if (mustPatrol)
         {
             mustTurn = !Physics2D.OverlapCircle(groundCheckPos.position, 0.1f, groundLayer);
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
         }
     }
 
     void Patrol ()
     {
-        if (mustTurn)
+        if (mustTurn && isGrounded)
         {
             Flip();
         }
@@ -46,8 +62,13 @@ public class AIPatrol : MonoBehaviour
     void Flip()
     {
         mustPatrol = false;
-        transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
+        transform.Rotate(0f, 180f, 0f);
         walkSpeed *= -1;
         mustPatrol = true;
     }
+    void Jump()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+    }
+
 }

@@ -10,7 +10,7 @@ public class HealthPickup : MonoBehaviour
 
         if (controller != null)
         {
-            if(controller.currentHealth  < controller.maxHealth)
+            if(controller.health  < controller.maxHealth)
             {
                 controller.HealPlayer(1);
                 FindObjectOfType<AudioManager>().Play("PickUp");       

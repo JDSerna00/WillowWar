@@ -36,7 +36,7 @@ public class BossWeapon : MonoBehaviour
         canShoot = false;
 
         yield return new WaitForSeconds(timeBTWShots);
-        GameObject newBullet = Instantiate(bullet, shootPos.position, Quaternion.identity);
+        GameObject newBullet = Instantiate(bullet, shootPos.position, shootPos.rotation);
 
         canShoot = true;
     }

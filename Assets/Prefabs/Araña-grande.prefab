@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 956198190}
   - component: {fileID: 956198191}
   - component: {fileID: 3296857699002813123}
+  - component: {fileID: 7675670600721753351}
   m_Layer: 0
   m_Name: "Ara\xF1a-grande"
   m_TagString: Untagged
@@ -33,6 +34,7 @@ Transform:
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 4184213288280313413}
+  - {fileID: 1426625294120645142}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -99,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97f75ce5bb8aebc4fb51e5e44dc8afa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 8
+  health: 6
   Drop: {fileID: 3916476918118302883, guid: 5bb192d75e7049944a75c1eea9bc36a6, type: 3}
   transform: {fileID: 6579923385893027274}
 --- !u!50 &956198190
@@ -164,10 +166,32 @@ MonoBehaviour:
   mustPatrol: 0
   rb: {fileID: 956198190}
   groundCheckPos: {fileID: 4184213288280313413}
+  groundCheck: {fileID: 1426625294120645142}
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
   walkSpeed: 60
+  jumpRate: 0.5
+  jumpForce: 0
+--- !u!95 &7675670600721753351
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107295314112105203}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 15036a8f7698b294aa7f10c895df2773, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1172876166863467647
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,4 +221,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6579923385893027274}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8477174905222155975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1426625294120645142}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1426625294120645142
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8477174905222155975}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.014, y: -0.209, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6579923385893027274}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

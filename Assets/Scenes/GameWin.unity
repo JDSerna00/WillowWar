@@ -350,9 +350,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1308028281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92863defc426d8e438bed10cb933033a, type: 3}
+  m_Script: {fileID: 11500000, guid: b73a599487a1a4c4b8d2cc839b20de11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 1308028281}
 --- !u!114 &1308028284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,8 +399,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1308028283}
-        m_TargetAssemblyTypeName: RetryGame, Assembly-CSharp
-        m_MethodName: LoadGame
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: Home
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

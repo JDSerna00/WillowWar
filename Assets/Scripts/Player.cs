@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     public int maxHealth = 3;
     public int health = 3;
     [SerializeField] healthSystem hs;
-    public int currentHealth;
     public int extraJumpsValue;
     public float timeInvincible = 2.0f;
     public float checkRadius;
@@ -31,7 +30,6 @@ public class Player : MonoBehaviour
         extraJumps = extraJumpsValue;
         animator = GetComponent<Animator>();
         rigidbody2d = GetComponent<Rigidbody2D>();
-        currentHealth = maxHealth;
         hs.DrawHearts(health, maxHealth);
     }
     void FixedUpdate()
@@ -105,11 +103,6 @@ public class Player : MonoBehaviour
     {
         extraJumpsValue = extraJumpsValue + 1;
     }
-    public void MaxHealth()
-    {
-        maxHealth = maxHealth + 1;
-        hs.DrawHearts(health,maxHealth);
-    }
     public void ChangeHealth(int amount)
     {
         if (amount < 0)
@@ -127,8 +120,7 @@ public class Player : MonoBehaviour
         hs.DrawHearts(health,maxHealth);
 
         if (health <= 0)
-        {
-            
+        {           
             SceneManager.LoadScene("GameOver");            
         }
     }
@@ -139,6 +131,11 @@ public class Player : MonoBehaviour
         health += dmg;
         hs.DrawHearts(health,maxHealth);
         }
+    }
+    public void MaxHealth()
+    {
+        maxHealth = maxHealth + 1;
+        hs.DrawHearts(health,maxHealth);
     }
     
  }

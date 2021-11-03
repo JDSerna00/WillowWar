@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossBullet : MonoBehaviour
 {
     public float speed = 30f;
-    public int damage = 1;
+    public int damage = 2;
     public Rigidbody2D rb;
     
     void Start()
@@ -27,7 +27,7 @@ public class BossBullet : MonoBehaviour
 
         if (player != null)
         {
-            player.ChangeHealth(1);
+            player.ChangeHealth(2);
         }
         Destroy(gameObject);
     }

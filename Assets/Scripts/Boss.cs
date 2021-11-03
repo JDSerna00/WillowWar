@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
+    
     Rigidbody2D rigidbody2D;
     public int HitPoints;
     public int MaxHitPoints = 30;
